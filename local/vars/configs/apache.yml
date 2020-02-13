@@ -1,0 +1,23 @@
+---
+apache_config: |
+  <VirtualHost *:443>
+    ServerName 192.168.0.43
+
+    <IfModule mod_passenger.c>
+      PassengerRuby /home/vagrant/.rvm/gems/ruby-{{ ruby_version }}@{{ app }}/wrappers/ruby
+      PassengerMaxRequests 1000
+    </IfModule>
+
+    RailsEnv development
+
+    DocumentRoot "/var/www/vhosts/{{ app }}/public"
+    <Directory "/var/www/vhosts/{{ app }}/public">
+      Order allow,deny
+      Allow from all
+
+      AllowOverride all
+      Options -MultiViews
+
+      Require all granted
+    </Directory>
+  </VirtualHost>
