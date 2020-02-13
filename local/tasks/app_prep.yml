@@ -2,8 +2,6 @@
 - name: Include apache config vars
   include_vars:
     file: configs/apache.yml
-  with_items:
-    -
 
 - name: Create app directory
   file:

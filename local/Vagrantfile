@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "local.yml"
+      ansible.playbook = "main.yml"
       ansible.become = true
       #ansible.raw_arguments  = "--ask-vault-pass"
       #ansible.raw_arguments  = "--vault-password-file=~/location/of/ansible_vault_pass.yml"
